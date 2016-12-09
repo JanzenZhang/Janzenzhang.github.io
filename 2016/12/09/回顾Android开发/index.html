@@ -1,0 +1,850 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/panda.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="前言本人在编程、软件开发方面确实是一个菜鸟，进入研究生阶段，才比较系统的学习编程（私底下）。实验室并不是做软件开发方向的，涉及到编程开发的内容相对较少。本人主要是出于兴趣，私底下学习编程。因此文中，有任何描述不专业的地方，请见谅。这完全是一篇作者闲来无事发的一篇即兴感慨。
+第一次Android开发的经历这里用开发来形容好像并不准确，确切的说是尝试。当时是在大三的时候软件课程设计的需要，要求开发一款">
+<meta property="og:type" content="article">
+<meta property="og:title" content="回顾Android开发">
+<meta property="og:url" content="http://yoursite.com/2016/12/09/回顾Android开发/index.html">
+<meta property="og:site_name" content="Janzenzhang's blog">
+<meta property="og:description" content="前言本人在编程、软件开发方面确实是一个菜鸟，进入研究生阶段，才比较系统的学习编程（私底下）。实验室并不是做软件开发方向的，涉及到编程开发的内容相对较少。本人主要是出于兴趣，私底下学习编程。因此文中，有任何描述不专业的地方，请见谅。这完全是一篇作者闲来无事发的一篇即兴感慨。
+第一次Android开发的经历这里用开发来形容好像并不准确，确切的说是尝试。当时是在大三的时候软件课程设计的需要，要求开发一款">
+<meta property="og:updated_time" content="2016-12-09T08:14:16.355Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="回顾Android开发">
+<meta name="twitter:description" content="前言本人在编程、软件开发方面确实是一个菜鸟，进入研究生阶段，才比较系统的学习编程（私底下）。实验室并不是做软件开发方向的，涉及到编程开发的内容相对较少。本人主要是出于兴趣，私底下学习编程。因此文中，有任何描述不专业的地方，请见谅。这完全是一篇作者闲来无事发的一篇即兴感慨。
+第一次Android开发的经历这里用开发来形容好像并不准确，确切的说是尝试。当时是在大三的时候软件课程设计的需要，要求开发一款">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/09/回顾Android开发/"/>
+
+
+  <title> 回顾Android开发 | Janzenzhang's blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Janzenzhang's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                回顾Android开发
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-09T00:07:13-08:00" content="2016-12-09">
+              2016-12-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Insights-and-Reflections/" itemprop="url" rel="index">
+                    <span itemprop="name">Insights and Reflections</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/09/回顾Android开发/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/回顾Android开发/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本人在编程、软件开发方面确实是一个菜鸟，进入研究生阶段，才比较系统的学习编程（私底下）。实验室并不是做软件开发方向的，涉及到编程开发的内容相对较少。本人主要是出于兴趣，私底下学习编程。因此文中，有任何描述不专业的地方，请见谅。这完全是一篇作者闲来无事发的一篇即兴感慨。</p>
+<h2 id="第一次Android开发的经历"><a href="#第一次Android开发的经历" class="headerlink" title="第一次Android开发的经历"></a>第一次Android开发的经历</h2><p>这里用开发来形容好像并不准确，确切的说是尝试。当时是在大三的时候软件课程设计的需要，要求开发一款可以采集学校WLAN信号强度以及分布的APP。现在想想确实不难，WLAN强度以及SSID的获取很简单，而地图的功能相对来说可能难一点，但是只需要调用百度地图的SDK进行开发，应该也不是难事。相对麻烦一点，需要自己做的可能就是地图和采集到的WLAN数据进行一个整合。但是背后的逻辑显然也不是很难。</p>
+<p>就是这样一个对于本科生来说，难度很正常的APP，让我对于Android开发有了那么一点点恐惧。说一下当时的技术背景吧，本科的我基本都在做电路相关的工作，主要是一些关于信号链的问题（装下逼），确切的说是测量电路和嵌入式电路。而编程语言也只学过C，C++都不会的那种。其实C也基本属于菜鸟水平，面向对象更不知道是何物。按照现在的我来看，当时这种基础完全不适合进行Android开发。</p>
+<p>但是由于学校课程的需要，我还是被赶鸭子上架，尝试去写这样一个Android应用。结果你们也应该猜到了，就是被搞得遍体鳞伤，体无完肤的那种。JAVA完全不会，甚至面向对象的概念都没有，怎么可能去理解人家的源码。至于配置文件，不管是布局文件还是文件也好，都是用XML写的。当时完全看不懂，只能跟着教程一步步来。就像和尚念经一样，完全是有口无心。</p>
+<p>最后还好抱了一个大腿队友，强行带我这个坑，拿了班上第一名的好成绩。而我没有任何成就感，因为我没有贡献一行代码，完全是在打酱油。羞耻的事，说到这也差不多了</p>
+<h2 id="再次回眸"><a href="#再次回眸" class="headerlink" title="再次回眸"></a>再次回眸</h2><p>昨天google刚上线了<a href="https://developers.google.cn/" target="_blank" rel="external">谷歌中国开发者的网站</a>，这又激起了我对Android开发的兴趣。所以我特地下载了一个<strong>Android Studio</strong>，尽管我电脑上已经装了<strong>IntelliJ IDEA</strong> 。为了简单，还是选择直接安装studio。</p>
+<p>打开界面发现还是有点似曾相识的感觉，基本配置和两年前用<strong>eclipse+ADT</strong>的配置差不多，基本设置比如字体这些调节当然和我熟悉的<strong>Intellij IDEA</strong>一样。所以在搭建环境上，速度很快</p>
+<p>环境搭好之后，当然应该是跑一个Demo，我选择新建了一个Empty Activity，然后自己照着书增加了一个按钮，绑定了一个监听器，试了一下运用Intent在不用Activity之间切换以及传递数据。</p>
+<p>我确实没有实现自己的任何逻辑代码，但是和两年前的自己相比，我觉得有很大不一样的是照着教程，也能很清楚的理解每一步在干什么了。不管是代码还是配置文件，我都看的一清二楚了。依旧要照着教程，我觉得只是对于Android平台还不够熟悉而言，当然也没有完全深入进去。至少理解起来，没有任何障碍</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Button button2 = (Button)findViewById(R.id.button_2);</div><div class="line">button2.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">    @Override</div><div class="line">    public void onClick(View v) &#123;</div><div class="line">        Intent intent =  new Intent();</div><div class="line">        intent.putExtra(&quot;data_return&quot;, &quot;Hello FirstActivity&quot;);</div><div class="line">        Log.d(&quot;hello&quot;,&quot;hello world&quot;);</div><div class="line">        setResult(RESULT_OK, intent);</div><div class="line">        finish();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>比如上面这行代码<code>Button button2 = (Button)findViewById(R.id.button_2);</code>这句话利用传入<code>R.id.button_2</code>参数来返回得到一个相应的Button对象。其实功能根据方法的名称是可以猜出来的，当然我们也可以继续传入的参数是int型，而得到的对象经过一次向下强制转换得到Button对象，那么我们有理由去推断，方法返回的类型应该是Button的父类View类，查一下源码发现果然是。其实类似的操作在集合中用的很多，有点像Map配合泛型使用的那种感觉。</p>
+<p>下面的绑定监听器，自然是用了大名鼎鼎的装饰器模式，也采用内部类的方式去书写，重写了<code>Onclick()</code>方法。这种和Swing编程中的绑定监听器几乎没有什么区别。自然得心应手.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">requestWindowFeature(Window.FEATURE_NO_TITLE);</div></pre></td></tr></table></figure>
+<p>上面的这句和swing编程<code>this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</code>个人觉得也有异曲同工之妙，都是利用一个常量来设置属性参数，当然应该还有更相近的，但是暂时一下想不起来了~~</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setContentView(R.layout.second_layout);</div></pre></td></tr></table></figure>
+<p>和<code>this.setLayout(new GridLayout(2, 2));</code>也差不多，只是一个传入的是常量，另一个穿入的是一个对象的实例</p>
+<p>至于Intent</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Intent intent = new Intent(MainActivity.this, SecondActivity.class);</div><div class="line">startActivityForResult(intent, 1);</div></pre></td></tr></table></figure>
+<p>个人觉得理解起来也很简单，甚至觉得比socket更简单。上面是用显式的方式去调用Intent，当然还有隐式的调用方式。</p>
+<p>不过能够明显感受到Activity和Intent对于Android开发的重要性。像Activity的生命周期之类的，我觉得还是要深入了解的。</p>
+<p>下面谈一下<code>AndroidManifest.xml</code>什么都不说，直接上代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    package=&quot;com.example.hello&quot;&gt;</div><div class="line"></div><div class="line">    &lt;application</div><div class="line">        android:allowBackup=&quot;true&quot;</div><div class="line">        android:icon=&quot;@mipmap/ic_launcher&quot;</div><div class="line">        android:label=&quot;@string/app_name&quot;</div><div class="line">        android:supportsRtl=&quot;true&quot;</div><div class="line">        android:theme=&quot;@style/AppTheme&quot;&gt;</div><div class="line">        &lt;activity</div><div class="line">            android:name=&quot;.MainActivity&quot;</div><div class="line">            android:label=&quot;This is FirstActivity&quot;&gt;</div><div class="line">            &lt;intent-filter&gt;</div><div class="line">                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;</div><div class="line"></div><div class="line">                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;</div><div class="line">            &lt;/intent-filter&gt;</div><div class="line">        &lt;/activity&gt;</div><div class="line">        &lt;activity android:name=&quot;.SecondActivity&quot;&gt;</div><div class="line">            &lt;intent-filter&gt;</div><div class="line">                &lt;action android:name=&quot;com.example.hello.ACTION_START&quot; /&gt;</div><div class="line"></div><div class="line">                &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;</div><div class="line">            &lt;/intent-filter&gt;</div><div class="line">        &lt;/activity&gt;</div><div class="line">        &lt;activity android:name=&quot;.ThirdActivity&quot;&gt;</div><div class="line">            &lt;intent-filter&gt;</div><div class="line">                &lt;action android:name=&quot;android.intent.action.VIEW&quot;/&gt;</div><div class="line">                &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;</div><div class="line">                &lt;data android:scheme=&quot;http&quot; /&gt;</div><div class="line">            &lt;/intent-filter&gt;</div><div class="line">        &lt;/activity&gt;</div><div class="line">    &lt;/application&gt;</div><div class="line"></div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure>
+<p>大三的时候看到这个也只是一知半解，因为当时不知道XML为何物。其实我觉得要理解这个，只需要完全掌握XML的基本知识。不管这个东西是干啥的，反正就是一个XML文件，那么我就可以用XML的方式去理解它。</p>
+<p>根节点是<code>manifest</code>，里面还有一些很重要的子节点像<code>appication</code>和<code>activity</code>,当然还有各种重要的属性。其实按照XML的结构去理解，我觉得还是可以理解个七八分。</p>
+<p>当然还有<code>layout.xml</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;&gt;</div><div class="line"></div><div class="line">    &lt;Button</div><div class="line">        android:id=&quot;@+id/button_3&quot;</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:text=&quot;Button 3&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
+<p>除了节点就是属性，很显然属性对于刻画其中每个节点（对于实际画面中的元素）。<br>不管XML来描述界面是否合理，Android这种设计模式确实将界面与逻辑实现了分离，我觉得这是很重要的。</p>
+<p>上面基本就是我花了一个小时左右时间，对于第二次接触Android的发现</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>其实写这篇随感，最终的目的就是这个结论。虽然目前看Android依旧很肤浅，但是我觉得我有信心去掌握Android开发。在第一次和第二次接触Android的两年时间里，我觉得我并没有去接触过Android开发了，但是我觉得我的感触完全不同。只是因为我对于Android许多很基础的技术进行了储备，像JAVA SE和XML。显然我的付出还是得到了一些收获。</p>
+<p>学习JAVA SE和XML的内容只是单纯为了学习J2EE所准备的。就像我的第一篇帖子中介绍的那样，我还在认真的学习J2EE相关的内容。第二次去接触Android开发完全是一时兴起。但是我依旧能够深切感受到技术之间是有相关性的，对于作为学生的我，我觉得最大的优势就是有时间去深入学习一门技术。我觉得这很重要，做技术的不能浅尝辄止，一定要深入。就像学习XML时，我除了理解XML的结构 ，也学习了Schema和DTD校验方式，当时还学习了如何用JAVA去解析XML文件。至于JAVA，我也尝试去深入理解面向对象的编程思想，对于JAVA中的每一个知识点，都力求彻底掌握。虽然目前学习的J2EE，但是web开发和Android开发还是有相识的地方的，界面和背后的业务逻辑都进行了分离，只是一个界面是用了HTML+CSS这种，Android是用了XML。</p>
+<p>最近发现阅读源码也很有意思。一方面，很多疑惑或者不解，看到源码就能秒懂，另一方面，通过阅读源码，也可以去接触大神是如何编写代码的，他们是如何实现这些功能并将API开放出来。我觉得对于提升个人编程水平也很有帮助。</p>
+<p>当然目前来说，个人还是一个小菜鸟，还需要继续努力。暂时也不会继续深入学习Android开发了，我需要集中精力去学习J2EE的内容。就像我之前说的一样，个人认为技术不仅要有广度，更要有深度。所以我打算继续深入J2EE。希望有一天我第三次再来接触Android会有更加深刻的体会，也希望那时的我已经学成归来，可以深入Android下去。</p>
+<p><em>路漫漫其修远兮，吾将上下而求索！</em></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/29/关于openstack中Nova服务停止的解决办法/" rel="next" title="关于openstack中Nova服务停止的解决办法">
+                <i class="fa fa-chevron-left"></i> 关于openstack中Nova服务停止的解决办法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/09/回顾Android开发/"
+           data-title="回顾Android开发" data-url="http://yoursite.com/2016/12/09/回顾Android开发/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/dog.jpg"
+               alt="Janzenzhang" />
+          <p class="site-author-name" itemprop="name">Janzenzhang</p>
+          <p class="site-description motion-element" itemprop="description">Good good study,day day up!</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JanzenZhang" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/janzenzhang" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一次Android开发的经历"><span class="nav-number">2.</span> <span class="nav-text">第一次Android开发的经历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#再次回眸"><span class="nav-number">3.</span> <span class="nav-text">再次回眸</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">4.</span> <span class="nav-text">结论</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Janzenzhang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"janzenzhang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = false;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = decodeURIComponent(data.url);
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title >= 0 || index_content >= 0 ){
+                                isMatch = true;
+								if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            } 
+							
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
