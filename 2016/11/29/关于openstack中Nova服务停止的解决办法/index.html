@@ -102,7 +102,7 @@ nova-compute服务负责在计算节点创建与运行虚拟机，安装步骤�
 
 1apt-get install -y nova-compute-kvm
 除此之外，nova">
-<meta property="og:updated_time" content="2016-12-09T09:30:29.825Z">
+<meta property="og:updated_time" content="2016-12-09T10:50:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于openstack中Nova服务停止的解决办法">
 <meta name="twitter:description" content="背景Nova API服务是OpenStack控制系统的核心计算服务，我们可以通过他来管理和控制整个OpenStack系统，以及调度和管理虚拟机，也可以通过它调用系统中的其他服务
@@ -369,24 +369,24 @@ nova-compute服务负责在计算节点创建与运行虚拟机，安装步骤�
 <ol>
 <li>安装nova-compute-kvm,如下所示：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install -y nova-compute-kvm</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install -y nova-compute-kvm</div></pre></td></tr></table></figure>
 <p>除此之外，nova-compute还有一堆配置文件</p>
 <ol>
 <li>重启nova-compute服务</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service noca-compute restart</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service noca-compute restart</div></pre></td></tr></table></figure>
 <h2 id="实际解决步骤"><a href="#实际解决步骤" class="headerlink" title="实际解决步骤"></a>实际解决步骤</h2><ol>
 <li>在compute节点上(node-25,对于我们的环境而言)，首先查看log信息，其具体位置在：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/var/log/nova/nova-compute.log</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/var/<span class="built_in">log</span>/nova/nova-compute.log</div></pre></td></tr></table></figure>
 <ol>
 <li>重启libvirtd：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service libvirtd start</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service libvirtd start</div></pre></td></tr></table></figure>
 <ol>
 <li>重启nova-compute服务</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service nova-compute restart</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service nova-compute restart</div></pre></td></tr></table></figure>
 <h2 id="友情链接"><a href="#友情链接" class="headerlink" title="友情链接"></a>友情链接</h2><p><a href="http://blog.csdn.net/violet_echo_0908/article/details/52097706" target="_blank" rel="external">重启openstack的服务命令集合</a></p>
 <h2 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h2>
       
