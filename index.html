@@ -477,8 +477,7 @@
 
       
         
-          
-            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>Nova API服务是OpenStack控制系统的核心计算服务，我们可以通过他来管理和控制整个OpenStack系统，以及调度和管理虚拟机，也可以通过它调用系统中的其他服务</p>
+          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>Nova API服务是OpenStack控制系统的核心计算服务，我们可以通过他来管理和控制整个OpenStack系统，以及调度和管理虚拟机，也可以通过它调用系统中的其他服务</p>
 <p>nova-compute服务负责在计算节点创建与运行虚拟机，安装步骤如下：</p>
 <ol>
 <li>安装nova-compute-kvm,如下所示：</li>
@@ -489,21 +488,11 @@
 <li>重启nova-compute服务</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service noca-compute restart</div></pre></td></tr></table></figure>
-<h2 id="实际解决步骤"><a href="#实际解决步骤" class="headerlink" title="实际解决步骤"></a>实际解决步骤</h2><ol>
-<li>在compute节点上(node-25,对于我们的环境而言)，首先查看log信息，其具体位置在：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/var/<span class="built_in">log</span>/nova/nova-compute.log</div></pre></td></tr></table></figure>
-<ol>
-<li>重启libvirtd：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service libvirtd start</div></pre></td></tr></table></figure>
-<ol>
-<li>重启nova-compute服务</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service nova-compute restart</div></pre></td></tr></table></figure>
-<h2 id="友情链接"><a href="#友情链接" class="headerlink" title="友情链接"></a>友情链接</h2><p><a href="http://blog.csdn.net/violet_echo_0908/article/details/52097706" target="_blank" rel="external">重启openstack的服务命令集合</a></p>
-<h2 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h2>
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/29/关于openstack中Nova服务停止的解决办法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -620,29 +609,16 @@
 
       
         
-          
-            <h1 id="paramiko模块学习心得"><a href="#paramiko模块学习心得" class="headerlink" title="paramiko模块学习心得"></a>paramiko模块学习心得</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Paramiko is a Python (2.6+, 3.3+) implementation of the SSHv2 protocol [1], providing both client and server functionality. While it leverages a Python C extension for low level cryptography (Cryptography), Paramiko itself is a pure Python interface around SSH networking concepts.</p>
+          <h1 id="paramiko模块学习心得"><a href="#paramiko模块学习心得" class="headerlink" title="paramiko模块学习心得"></a>paramiko模块学习心得</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Paramiko is a Python (2.6+, 3.3+) implementation of the SSHv2 protocol [1], providing both client and server functionality. While it leverages a Python C extension for low level cryptography (Cryptography), Paramiko itself is a pure Python interface around SSH networking concepts.</p>
 <p>paramiko是python的一个模块，实现了SSH2协议，支持了客户端和服务器的功能。<br>使用paramiko模块主要实现和远程服务器的文件上传、下载和执行命令。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install paramiko</div></pre></td></tr></table></figure>
 <p>windows和Ubuntu下都可以采用此方式安装</p>
 <h2 id="使用paramiko"><a href="#使用paramiko" class="headerlink" title="使用paramiko"></a>使用paramiko</h2><h3 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h3><p>paramiko_client.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> paramiko</div><div class="line"><span class="keyword">import</span> configparser</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParamikoClient</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, config_str)</span>:</span></div><div class="line">        self.config = configparser.ConfigParser()</div><div class="line">        self.config.read(config_str)</div><div class="line">        <span class="comment">#获取SSHClient对象</span></div><div class="line">        self.client = paramiko.SSHClient()</div><div class="line">        <span class="comment">#运行连接不在know_hosts文件中的主机</span></div><div class="line">        self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())</div><div class="line">        self.sftp_client = <span class="keyword">None</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connect</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">        <span class="comment">#注意对于配置文件中不同参数，要根据数据类型采用不同的方法取出，整型的采用getint</span></div><div class="line">            self.client.connect(hostname=self.config.get(<span class="string">'ssh'</span>, <span class="string">'host'</span>), port=self.config.getint(<span class="string">'ssh'</span>, <span class="string">'port'</span>)</div><div class="line">                                , username=self.config.get(<span class="string">'ssh'</span>, <span class="string">'username'</span>),</div><div class="line">                                password=self.config.get(<span class="string">'ssh'</span>, <span class="string">'password'</span>)</div><div class="line">                                , timeout=self.config.getfloat(<span class="string">'ssh'</span>, <span class="string">'timeout'</span>))</div><div class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">            print(e)</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                self.client.close()</div><div class="line">            <span class="keyword">except</span>:</div><div class="line">                <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run_cmd</span><span class="params">(self, cmd_str)</span>:</span></div><div class="line">        stdin, stdout, stderr = self.client.exec_command(cmd_str)</div><div class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> stdout:</div><div class="line">            print(line)</div><div class="line"></div><div class="line">    <span class="comment">#可以发现SFTPClient的建立借助于之前建立好的SSH连接，即self.client</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_sftp_client</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.sftp_client:</div><div class="line">            self.sftp_client = paramiko.SFTPClient.from_transport(self.client.get_transport())</div><div class="line"></div><div class="line">        <span class="keyword">return</span> self.sftp_client</div></pre></td></tr></table></figure></p>
-<p>在代码中引入<code>configparser</code>模块是为了解析配置文件<code>config.ini</code></p>
-<p>整体模块采用了面向对象的编程思想来用类对数据和方法进行封装。</p>
-<p>exec_cmd.py</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> paramiko_client <span class="keyword">import</span> ParamikoClient</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    client = ParamikoClient(<span class="string">'config.ini'</span>)</div><div class="line">    client.connect()</div><div class="line">    client.run_command(<span class="string">'date'</span>)</div></pre></td></tr></table></figure>
-<p>为了实现代码良好的封装性，并且减少硬编码的影响，这里采用了读取配置文件的方式，加载链接所需要的必要参数，即config.ini<br>config.ini</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="section">[ssh]</span></div><div class="line"><span class="attr">host</span>=<span class="number">192.168</span>.<span class="number">3.137</span></div><div class="line"><span class="attr">port</span>=<span class="number">22</span></div><div class="line"><span class="attr">username</span>=zhang</div><div class="line"><span class="attr">password</span>=<span class="number">116113</span></div><div class="line"><span class="attr">timeout</span>=<span class="number">1.0</span></div></pre></td></tr></table></figure>
-<h3 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h3><p>upload_file.py</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> paramiko_client <span class="keyword">import</span> ParamikoClient</div><div class="line"></div><div class="line">client = ParamikoClient(<span class="string">'config.ini'</span>)</div><div class="line">client.connect()</div><div class="line">sftp_client = client.get_sftp_client()</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">sftp_client.put(<span class="string">'C:\\Users\\JanzenZhang\\Desktop\\network_aware.py'</span>, <span class="string">'/home/zhang/network_aware.py'</span>)</div></pre></td></tr></table></figure>
-<p>一定要保证在执行<code>get_sftp_client()</code>之前已经执行了<code>client.connect()</code></p>
-<h3 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h3><p>download_file.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> paramiko_client <span class="keyword">import</span> ParamikoClient</div><div class="line"></div><div class="line">client = ParamikoClient(<span class="string">'config.ini'</span>)</div><div class="line">client.connect()</div><div class="line">sftp_client = client.get_sftp_client()</div><div class="line"></div><div class="line">sftp_client.get(<span class="string">'/home/zhang/res.txt'</span>,<span class="string">'C:\\Users\\JanzenZhang\\Desktop\\res.txt'</span>)</div></pre></td></tr></table></figure></p>
-<p>不管是上传还是下载文件，第一个参数的位置传递的都是源文件的地址。</p>
-<h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><p>以上代码本人均在本机以及本机上的Ubuntu 16.04虚拟主机之间测试通过</p>
-<p>代码参考了麦子学院教程</p>
-<h3 id="拓展性"><a href="#拓展性" class="headerlink" title="拓展性"></a>拓展性</h3><p>结合python的多线程方法，可以实现多个文件的同时上传和下载，也可以同时和多个服务器进行文件传输</p>
-<h3 id="友情链接"><a href="#友情链接" class="headerlink" title="友情链接"></a>友情链接</h3><p><a href="http://docs.paramiko.org/" target="_blank" rel="external">paramiko官方文档</a></p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/06/paramiko模块学习心得/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -759,10 +735,9 @@
 
       
         
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>鉴于目前网上关于Juju的资料很少，而且大部分都是介绍如何利用Juju部署Openstack环境。而这里我们将介绍如何基于本地的私有云(OpenStack)配置Juju。</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>鉴于目前网上关于Juju的资料很少，而且大部分都是介绍如何利用Juju部署Openstack环境。而这里我们将介绍如何基于本地的私有云(OpenStack)配置Juju。</p>
 <h1 id="Juju简介"><a href="#Juju简介" class="headerlink" title="Juju简介"></a>Juju简介</h1><p>Juju 是 Canonical 公司提供的服务编排工具。它是Ubuntu云套件的一部分，与Ubuntu 服务器、OpenStack、用于裸机配置的MAAS 、以及 用于系统管理和监控的Landscape 一起组成 Ubuntu 云套件。</p>
-<h1 id="Juju安装"><a href="#Juju安装" class="headerlink" title="Juju安装"></a>Juju安装</h1><p><a href="https://jujucharms.com/docs/1.25/getting-started" target="_blank" rel="external">官方安装教程地址</a></p>
+<h1 id="Juju安装"><a href="#Juju安装" class="headerlink" title="Juju安装"></a>Juju安装</h1><p><a href="https://jujucharms.com/docs/1.25/getting-started">官方安装教程地址</a></p>
 <p>在Ubuntu下安装方式为(以Juju1.25版本为例)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository ppa:juju/stable</div><div class="line">sudo apt-get update &amp;&amp; sudo apt-get install juju-core</div></pre></td></tr></table></figure>
 <h1 id="基于私有云OpenStack配置Juju"><a href="#基于私有云OpenStack配置Juju" class="headerlink" title="基于私有云OpenStack配置Juju"></a>基于私有云OpenStack配置Juju</h1><h2 id="生成Juju配置文件"><a href="#生成Juju配置文件" class="headerlink" title="生成Juju配置文件"></a>生成Juju配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">juju generate-config</div></pre></td></tr></table></figure>
@@ -782,89 +757,11 @@
 <li>下载并在rocker容器中运行functest</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker run -id --privileged=<span class="literal">true</span> --name functest_demo <span class="variable">$env_vars</span> <span class="variable">$results_vol</span> opnfv/functest</div></pre></td></tr></table></figure>
-<ol>
-<li>进入docker容器</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker <span class="built_in">exec</span> -ti functest_demo /bin/bash</div></pre></td></tr></table></figure>
-<ol>
-<li>在运行functest之前，需要准备环境变量</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">functest env prepare</div></pre></td></tr></table></figure>
-<p>Tips:如果在执行这条命令时，卡在了验证网络连通性的地方，很有可能是由于网卡没有配置VLAN，需要设置子网卡，并配置相应的VLAN tag。这部分应该和安装OpenStack时的网络VLAN划分保持一致。</p>
-<ol>
-<li>在docker环境内，在<code>/home/opnfv/functest/conf</code>下找到文件openstack.creds，并用vi打开。</li>
-</ol>
-<p><img src="http://oevsdjlcc.bkt.clouddn.com/openstack%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.png" alt="image"></p>
-<ol>
-<li>退出docker环境，在主机上找到路径<code>~/.juju/</code>下的enviroments.yaml文件，并用vi打开，主要是对openstack词条下的环境变量进行编辑。</li>
-</ol>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="attr">type:</span> openstack</div><div class="line"><span class="comment"># use-floating-ip specifies whether a floating IP address is</span></div><div class="line"><span class="comment"># required to give the nodes a public IP address. Some</span></div><div class="line"><span class="comment"># installations assign public IP addresses by default without</span></div><div class="line"><span class="comment"># requiring a floating IP address.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># use-floating-ip: false</span></div><div class="line"><span class="comment"># use-default-secgroup specifies whether new machine instances</span></div><div class="line"><span class="comment"># should have the "default" Openstack security group assigned.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># use-default-secgroup: false</span></div><div class="line"><span class="comment"># network specifies the network label or uuid to bring machines up</span></div><div class="line"><span class="comment"># on, in the case where multiple networks exist. It may be omitted</span></div><div class="line"><span class="comment"># otherwise.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># network: &lt;your network label or uuid&gt;</span></div><div class="line"><span class="comment"># tools-metadata-url specifies the location of the Juju tools and</span></div><div class="line"><span class="comment"># metadata. It defaults to the global public tools metadata</span></div><div class="line"><span class="comment"># location https://streams.canonical.com/tools.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># tools-metadata-url:  https://your-tools-metadata-url</span></div><div class="line"><span class="comment"># image-metadata-url specifies the location of Ubuntu cloud image</span></div><div class="line"><span class="comment"># metadata. It defaults to the global public image metadata</span></div><div class="line"><span class="comment"># location https://cloud-images.ubuntu.com/releases.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># image-metadata-url:  https://your-image-metadata-url</span></div><div class="line"><span class="comment"># image-stream chooses a simplestreams stream to select OS images</span></div><div class="line"><span class="comment"># from, for example daily or released images (or any other stream</span></div><div class="line"><span class="comment"># available on simplestreams).</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># image-stream: "released"</span></div><div class="line"><span class="comment"># auth-url defaults to the value of the environment variable</span></div><div class="line"><span class="comment"># OS_AUTH_URL, but can be specified here.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># auth-url: https://yourkeystoneurl:443/v2.0/</span></div><div class="line"><span class="comment"># tenant-name holds the openstack tenant name. It defaults to the</span></div><div class="line"><span class="comment"># environment variable OS_TENANT_NAME.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># tenant-name: &lt;your tenant name&gt;</span></div><div class="line"><span class="comment"># region holds the openstack region. It defaults to the</span></div><div class="line"><span class="comment"># environment variable OS_REGION_NAME.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># region: &lt;your region&gt;</span></div><div class="line"><span class="comment"># The auth-mode, username and password attributes are used for</span></div><div class="line"><span class="comment"># userpass authentication (the default).</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># auth-mode holds the authentication mode. For user-password</span></div><div class="line"><span class="comment"># authentication, auth-mode should be "userpass" and username and</span></div><div class="line"><span class="comment"># password should be set appropriately; they default to the</span></div><div class="line"><span class="comment"># environment variables OS_USERNAME and OS_PASSWORD respectively.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># auth-mode: userpass</span></div><div class="line"><span class="comment"># username: &lt;your username&gt;</span></div><div class="line"><span class="comment"># password: &lt;secret&gt;</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># For key-pair authentication, auth-mode should be "keypair" and</span></div><div class="line"><span class="comment"># access-key and secret-key should be set appropriately; they</span></div><div class="line"><span class="comment"># default to the environment variables OS_ACCESS_KEY and</span></div><div class="line"><span class="comment"># OS_SECRET_KEY respectively.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># auth-mode: keypair</span></div><div class="line"><span class="comment">#access-key: &lt;secret&gt;</span></div><div class="line"><span class="comment"># secret-key: &lt;secret&gt;</span></div></pre></td></tr></table></figure>
-<p>可以发现大部分环境变量在functest中都可以找到，下面是我们的环境变量设置情况：</p>
-<p><img src="http://oevsdjlcc.bkt.clouddn.com/juju_environemnt1.png" alt="image"></p>
-<p><img src="http://oevsdjlcc.bkt.clouddn.com/juju_enviroment2.png" alt="image"></p>
-<p><img src="http://oevsdjlcc.bkt.clouddn.com/juju_environment3.png" alt="image"></p>
-<p>其中use-floating-ip，use-default-secgroup均设置为false<br>agent-metadata-url，image-metadata-url的设置后面会提到，这里先不进行更改。<br>region，auth-mode采用默认值，撤掉注释即可。network填写openstack一个私有网络即可。</p>
-<p>关于这一部分的说明，见<a href="https://jujucharms.com/docs/1.25/config-openstack" target="_blank" rel="external">官网</a></p>
-<h2 id="使用Simplestreams建立私有云"><a href="#使用Simplestreams建立私有云" class="headerlink" title="使用Simplestreams建立私有云"></a>使用Simplestreams建立私有云</h2><p>当使用Juju bootstrap云时，需要两种信息:</p>
-<ol>
-<li><p><strong>The uuid of the image to use when starting new compute instances.</strong></p>
-</li>
-<li><p><strong>The URL from which to download the correct version of a tools tarball.</strong></p>
-</li>
-</ol>
-<p>我们可以简单的理解为上述两种信息都存储在两个json文件中。</p>
-<p>其具体介绍可以参考<a href="https://jujucharms.com/docs/1.25/howto-privatecloud" target="_blank" rel="external">官网</a></p>
-<p>在生成上述两个文件之前要做一些准备工作：</p>
-<ol>
-<li><p>上传Ubuntu 14.04LTS（Trusty）和Ubuntu 16.04LTS（Xenial）镜像到Openstack</p>
-<p><a href="http://cloud-images.ubuntu.com/trusty/20161014/" target="_blank" rel="external">Trusty镜像下载地址</a></p>
-<p><a href="http://cloud-images.ubuntu.com/xenial/20161014/" target="_blank" rel="external">Xenial镜像下载地址</a></p>
-<p> 其中均选择 xxxxx-server-cloudimg-amd64-disk1.img 下载</p>
-<p> 然后就是上传到Openstack：</p>
-<p> <img src="http://oevsdjlcc.bkt.clouddn.com/%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F1.png" alt="image"></p>
-<p> <img src="http://oevsdjlcc.bkt.clouddn.com/%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F2_1.png" alt="image"></p>
-</li>
-<li><p>安装Apache服务器</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install apache2</div></pre></td></tr></table></figure>
-<ol>
-<li>生成image json文件：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo juju metadata generate-image -a amd64 -i 843bef24-8c70-40e1-a380-972717c9e4b3 -r RegionOne -s xenial -d /var/www/html/stack -u http://172.16.1.3:5000/v2.0 -e openstack</div></pre></td></tr></table></figure>
-<p>相应的命令行选项：</p>
-<ul>
-<li>-i 843bef24-8c70-40e1-a380-972717c9e4b3: specifies the ID of the Glance image that we just created before.</li>
-<li>-u <a href="http://172.16.1.3:5000/v2.0" target="_blank" rel="external">http://172.16.1.3:5000/v2.0</a>: specifies the Keystone URL, and should match the value from the auth-url field of our environment as specified in $HOME/.juju/environments.yaml.</li>
-<li>-e openstack: identifies the Juju environment described in $HOME/.juju/environments.yaml file.</li>
-<li>-s xenial: specifies the image series (the Ubuntu release name).</li>
-<li>-a amd64: specifies the CPU architecture.</li>
-<li>-d /var/www/html/stack: specifies the base directory where the metadata will be written to. For images, the path will be /opt/stack/images/streams/v1..</li>
-</ul>
-<ol>
-<li>生成tools json文件:</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">juju metadata generate-tools -d /var/www/html/stack/ --stream released</div></pre></td></tr></table></figure>
-<p>Tips:</p>
-<p><code>/var/www/html/</code>为Apache服务器默认路径</p>
-<ol>
-<li>校验生成的上述生成的文件</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">juju metadata validate-images</div><div class="line">juju metadata validate-tools</div></pre></td></tr></table></figure>
-<ol>
-<li>下载工具文件：</li>
-</ol>
-<p><a href="https://streams.canonical.com/juju/tools/agent/1.25.6/juju-1.25.6-xenial-amd64.tgz" target="_blank" rel="external">下载连接</a></p>
-<p>并将其放到<code>/var/www/html/stack/tools/released</code>路径下</p>
-<p>Tips:注意要下载和自己juju版本以及系统匹配的工具文件版本</p>
-<p>更改上述文件的权限：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /var/www/html/stack</div><div class="line">sudo chmod -R 777 ./*</div></pre></td></tr></table></figure>
-<ol>
-<li>最后就是bootstrap</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">juju switch openstack</div><div class="line">juju bootstrap</div></pre></td></tr></table></figure>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/19/Configure-Juju-for-OpenStack/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
