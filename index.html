@@ -14,6 +14,7 @@
             margin: 0;
             overflow-x: hidden;
         }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -23,16 +24,19 @@
             position: relative;
             z-index: 1;
         }
+
         h1 {
             color: #ff69b4;
             text-align: center;
         }
+
         .love-story, .photo, .message, .timer {
-            margin-top: 40px;
-            padding: 20px;
+            margin-top: 20px;
+            padding: 10px;
             background-color: rgba(255, 255, 255, 0.6);
-            border-radius: 10px;
+            border-radius: 5px;
         }
+
         .photo img {
             max-width: 100%;
             height: auto;
@@ -40,14 +44,17 @@
             margin: 0 auto;
             border-radius: 10px;
         }
+
         .message {
             font-style: italic;
             text-align: center;
         }
+
         .timer {
             text-align: center;
             font-size: 1.2em;
         }
+
         #particles-js {
             position: fixed;
             width: 100%;
@@ -61,18 +68,25 @@
 <body>
 <div id="particles-js"></div>
 <div class="container">
-    <h1>七夕快乐,我亲爱的!</h1>
+    <h1>七夕快乐,我亲爱的航飘!</h1>
     <div class="love-story">
         <h2>我们的故事</h2>
-        <p>这里可以写下你们的爱情故事...</p >
+        <p>
+            还记得我们相遇的那天吗？你像迪士尼在逃公主一般突然闯进我的生活里。从那一刻起，我的世界便有了你的色彩。我们一起经历的每一天，都是我最珍贵的回忆。</p>
+        <p>我们一起看过的日出日落，走过的春秋冬夏，分享的欢笑泪水，都让我更加确信：你就是我想共度一生的人。</p>
     </div>
     <div class="photo">
-        <img src="images/mylove.jpeg" alt="我们的合照">
+        <img src="images/couple.jpg" alt="我们的合照">
     </div>
     <div class="timer" id="loveTimer"></div>
     <div class="message">
-        <p>在这特别的日子里,我想对你说...</p >
-        <p>我爱你!</p >
+        <p>在这个特别的日子里，我想对你说：</p>
+        <p>我爱你</p>
+        <p>你是我生命中最美好的礼物。无论晴天还是雨天，有你在身边，我的心里永远是春天。</p>
+        <p>我爱你，不仅因为你是你，更因为当我和你在一起时，我更喜欢那个成为更好的自己。</p>
+        <p>往后余生，风雪是你，平淡是你，清贫也是你，荣华是你，心底温柔是你，目光所至，也是你。</p>
+        <p>一屋两人，三餐四季，我希望未来的每一天都有你。</p>
+        <p>七夕快乐，刘航飘。愿我们的故事，比天长地久。</p>
     </div>
 </div>
 
@@ -81,8 +95,8 @@
     // 初始化Particles.js
     particlesJS("particles-js", {
         particles: {
-            number: { value: 50 },
-            color: { value: "#ff69b4" },
+            number: {value: 50},
+            color: {value: "#ff69b4"},
             shape: {
                 type: "image",
                 image: {
@@ -91,9 +105,9 @@
                     height: 32
                 }
             },
-            opacity: { value: 0.7, random: false },
-            size: { value: 15, random: true },
-            line_linked: { enable: false },
+            opacity: {value: 0.7, random: false},
+            size: {value: 15, random: true},
+            line_linked: {enable: false},
             move: {
                 enable: true,
                 speed: 2,
@@ -107,13 +121,13 @@
         interactivity: {
             detect_on: "canvas",
             events: {
-                onhover: { enable: true, mode: "repulse" },
-                onclick: { enable: true, mode: "push" },
+                onhover: {enable: true, mode: "repulse"},
+                onclick: {enable: true, mode: "push"},
                 resize: true
             },
             modes: {
-                repulse: { distance: 100, duration: 0.4 },
-                push: { particles_nb: 4 }
+                repulse: {distance: 100, duration: 0.4},
+                push: {particles_nb: 4}
             }
         },
         retina_detect: true
