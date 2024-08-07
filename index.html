@@ -6,7 +6,7 @@
     <title>七夕快乐,亲爱的!</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             background-color: #ffe6f2;
             color: #333;
             line-height: 1.6;
@@ -28,6 +28,8 @@
         h1 {
             color: #ff69b4;
             text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
         }
 
         .love-story, .photo, .message, .timer {
@@ -50,11 +52,6 @@
             text-align: center;
         }
 
-        .timer {
-            text-align: center;
-            font-size: 1.2em;
-        }
-
         #particles-js {
             position: fixed;
             width: 100%;
@@ -62,6 +59,46 @@
             top: 0;
             left: 0;
             z-index: 0;
+        }
+        .timer-container {
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            padding: 20px;
+            border-radius: 7px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-top: 20px;
+        }
+        .timer-container h2 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .timer {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ff4081;
+            background-color: rgba(255,255,255,0.8);
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .timer:hover {
+            animation: pulse 1s infinite;
+        }
+        @media (max-width: 600px) {
+            .timer {
+                font-size: 24px;
+                padding: 10px;
+            }
+            .timer-container h2 {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
@@ -78,7 +115,10 @@
     <div class="photo">
         <img src="images/couple.jpg" alt="我们的合照">
     </div>
-    <div class="timer" id="loveTimer"></div>
+    <div class="timer-container">
+        <h2>我们已经相爱了</h2>
+        <div id="loveTimer" class="timer"></div>
+    </div>
     <div class="message">
         <p>在这个特别的日子里，我想对你说：</p>
         <p>我爱你</p>
@@ -146,7 +186,7 @@
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
         const timerElement = document.getElementById("loveTimer");
-        timerElement.innerHTML = `我们已经在一起 ${years}年 ${days}天 ${hours}小时 ${minutes}分钟 ${seconds}秒`;
+        timerElement.textContent = `${years}年 ${days}天 ${hours}小时 ${minutes}分钟 ${seconds}秒`;
     }
 
     setInterval(updateTimer, 1000);
